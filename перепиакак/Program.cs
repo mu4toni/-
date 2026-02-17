@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,47 +6,64 @@ using System.Threading.Tasks;
 
 namespace перепиакак
 {
-    internal class Program
-    {
-        static int AddNumber()
+    internal class static bool EnoughLength(string password)
         {
-            Console.WriteLine("Введите первое число");
-            int num1 = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите второе число");
-            int num2 = Convert.ToInt32(Console.ReadLine());
-            int sum = num1 + num2;
-            return sum;
-        }
-        static void ChekEven()
-        {
-            Console.WriteLine("Введите число");
-            int number = Convert.ToInt32(Console.ReadLine());
-            if (number % 2 == 0)
-                Console.WriteLine("Число четное");
-            else
-                Console.WriteLine("Число нечетное");
-        }
-        static void CalculateDiscount()
+            if (password.Length >= 8)
             {
-            Console.WriteLine("Введите цену товара");
-            Console.WriteLine("Введите процент скидки");
-            doublw discountAmount = price*Discount
-            Console.WriteLine($"Начальная цена{price}");
-            Console.WriteLine($"Финальная цена {Finalprice}");
+                return true;
+            }
+            return false;
         }
+
+        static bool toUpperExist(string password)
+        {
+            if (password != password.ToLower())
+            {
+                return true;
+            }
+            return false;
+        }
+
+        static bool Digits(string password)
+        {
+            foreach(char c in password)
+            {
+                if (c == '1') return true;
+                if (c == '2') return true;
+                if (c == '3') return true;
+                if (c == '4') return true;
+                if (c == '5') return true;
+                if (c == '6') return true;
+                if (c == '7') return true;
+                if (c == '8') return true;
+                if (c == '9') return true;
+                if (c == '0') return true;
+            }
+            return false;
+        }
+
+        static bool num(string password)
+        {
+            if (EnoughLength(password) && toUpperExist(password) && Digits(password))
+            {
+                return true;
+            }
+            return false;
+        }
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Сумма чисел");
-            AddNumber();
-            AddNumber();
-            AddNumber();
+                Console.WriteLine("Введите пароль: ");
+                string password = Console.ReadLine();
+                if (num(password))
+                {
+                    Console.WriteLine("Пароль надежный");
+                }
+                else
+                {
+                    Console.WriteLine("Пароль не надежный");
+                }
 
-            Console.WriteLine("Проверка четности");
-            ChekEven();
-            ChekEven();
-            ChekEven();
-
-            Console.WriteLine("Расчет финальной стоимости");
-        }
+        
     }
 }
